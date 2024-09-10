@@ -79,3 +79,41 @@ func TestMirrorCipher(t *testing.T) {
 		})
 	}
 }
+
+func TestOpenTheMetallicDoor(t *testing.T) {
+	// arrange
+	riddle := NewRiddlePuzzlePart1()
+	testCases := []struct {
+		name   string
+		code   string
+		expect int
+	}{
+		{
+			name:   "code 1 - normal",
+			code:   "5294",
+			expect: 20,
+		},
+		{
+			name:   "code 1 - space included",
+			code:   " 5 2 94 ",
+			expect: 20,
+		},
+		{
+			name:   "code 1 - string included",
+			code:   "5d294as",
+			expect: 20,
+		},
+	}
+
+	for _, tc := range testCases {
+		t.Run(tc.name, func(t *testing.T) {
+			// act
+			got := riddle.OpenTheMetallicDoor(tc.code)
+			// assert
+			if got != tc.expect {
+				t.Errorf("🚪:OpenTheMetallicDoor(%q) = %d, want %d", tc.code, got, tc.expect)
+			}
+		})
+	}
+
+}

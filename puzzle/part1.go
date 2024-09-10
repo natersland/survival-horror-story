@@ -2,12 +2,14 @@ package puzzle
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
 )
 
 type RiddlePuzzlePart1 interface {
 	EscapeTheLockedDoor(combo string) int
 	MirrorCipher(symbol string) int
+	OpenTheMetallicDoor(code string) int
 }
 
 type riddlePuzzleStruct struct {
@@ -50,4 +52,19 @@ func (r *riddlePuzzleStruct) MirrorCipher(symbol string) int {
 
 	return uniqueSymbol
 
+}
+
+func (r *riddlePuzzleStruct) OpenTheMetallicDoor(code string) int {
+	// 	The door requires solving a complex numeric code, and only by deciphering the symbols can you open it.
+	// **🧩 Difficulty:** ⭐⭐⭐
+	// **📝 Input:** A string of numbers.
+	// **📝 Output:** Return the sum of all the digits in the string.
+
+	sum := 0
+	for _, char := range code {
+		digit, _ := strconv.Atoi(string(char))
+		sum += digit
+	}
+
+	return sum
 }
