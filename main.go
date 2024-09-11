@@ -9,9 +9,11 @@ func main() {
 	escapeTheLockedDoor := riddleP1.EscapeTheLockedDoor("4f2d6")
 	mirrorCipher := riddleP1.MirrorCipher("aabcc")
 	openTheMetallicDoor := riddleP1.OpenTheMetallicDoor("5294")
+	unlockTheVault := riddleP1.UnlockTheVault("1234")
 
 	println("🚪:EscapeTheLockedDoor: doorCombination is ", escapeTheLockedDoor)
 	println("🪞:MirrorCipher: unique symbol count is: ", mirrorCipher)
 	println("🚪:OpenTheMetallicDoor: deciphering is: ", openTheMetallicDoor)
+	println("🔓:UnlockTheVault: deciphering is: ", unlockTheVault)
 
 }

@@ -2,6 +2,7 @@ package puzzle
 
 import (
 	"fmt"
+	"regexp"
 	"strconv"
 	"strings"
 )
@@ -10,6 +11,7 @@ type RiddlePuzzlePart1 interface {
 	EscapeTheLockedDoor(combo string) int
 	MirrorCipher(symbol string) int
 	OpenTheMetallicDoor(code string) int
+	UnlockTheVault(code string) int
 }
 
 type riddlePuzzleStruct struct {
@@ -67,4 +69,23 @@ func (r *riddlePuzzleStruct) OpenTheMetallicDoor(code string) int {
 	}
 
 	return sum
+}
+
+func (r *riddlePuzzleStruct) UnlockTheVault(code string) int {
+	// **Unlock the Vault**
+	// The vault door has a code lock with a sequence of numbers, but the code must be deciphered based on a pattern.
+	// **🧩 Difficulty:** ⭐⭐
+	// **📝 Input:** A sequence of numbers.
+	// **📝 Output:** Return the product of all the digits in the sequence.
+	re := regexp.MustCompile(`\D`) // \D matches any non-digit character
+	formattedCode := re.ReplaceAllString(code, "")
+
+	result := 1
+
+	for _, ch := range formattedCode {
+		digit, _ := strconv.Atoi(string(ch))
+		result *= digit
+	}
+
+	return result
 }

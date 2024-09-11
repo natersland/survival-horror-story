@@ -117,3 +117,46 @@ func TestOpenTheMetallicDoor(t *testing.T) {
 	}
 
 }
+
+func TestUnlockTheVault(t *testing.T) {
+	// arrange
+	riddle := NewRiddlePuzzlePart1()
+	testCases := []struct {
+		name   string
+		code   string
+		expect int
+	}{
+		{
+			name:   "Code 1 - normal",
+			code:   "1234",
+			expect: 24,
+		},
+		{
+			name:   "Code 1 - with space and trim",
+			code:   " 12 3 4 ",
+			expect: 24,
+		},
+		{
+			name:   "Code 2 - with space special char",
+			code:   "%(12$34)",
+			expect: 24,
+		},
+		{
+			name:   "Code 2 - normal",
+			code:   "1481",
+			expect: 32,
+		},
+	}
+
+	for _, tc := range testCases {
+		t.Run(tc.name, func(t *testing.T) {
+			// act
+			got := riddle.UnlockTheVault(tc.code)
+
+			// assert
+			if got != tc.expect {
+				t.Errorf("🔓:UnlockTheVault(%q) = %d, want %d", tc.code, got, tc.expect)
+			}
+		})
+	}
+}
